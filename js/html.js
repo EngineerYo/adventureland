@@ -1640,6 +1640,7 @@ function render_item_help(container, name, level, pure) {
 
 		for (let lvl = 0; lvl < levels.length; lvl++) {
 			var temp_name = `${iname}${lvl ? lvl : ''}`
+
 			// Early continue if drop table doesn't exist
 			if (!G.drops[temp_name]) continue
 
@@ -1647,10 +1648,7 @@ function render_item_help(container, name, level, pure) {
 			var true_table = recur_replace(table)
 
 			for (let drop_table_item of true_table) {
-				// Early return: if the item name isn't equal to the name of the item we're trying to find, continue
-				if (drop_table_item[1] != name) continue
-
-				items.push([iname, lvl])
+				if (drop_table_item[1] === name) items.push([iname, lvl])
 			}
 
 		}
